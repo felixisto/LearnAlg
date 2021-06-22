@@ -12,7 +12,7 @@ enum PersistentPathError: Error {
  * A common problem with paths is, they don't always stay valid after app relaunch,
  * so the full path may have to be corrected.
  */
-protocol PersistentPath: AnyObject, NSCoding, CustomStringConvertible {
+protocol PersistentPath: NSCoding, CustomStringConvertible {
     // Non-persistent full path.
     var url: URL { get }
     

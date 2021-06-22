@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BinaryTreeNode: class, CustomStringConvertible {
+protocol BinaryTreeNode: AnyObject, CustomStringConvertible {
     var value: Int { get }
     
     var parent: BinaryTreeNode? { get set }

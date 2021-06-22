@@ -7,53 +7,12 @@
 
 import Foundation
 
-struct SinglyLinkedList <T>: Sequence, CustomStringConvertible {
-    class Node <T> {
-        var value: T
-        var next: Node<T>?
-        
-        init(value: T, next: Node<T>?) {
-            self.value = value
-            self.next = next
-        }
-    }
+struct SinglyLinkedList <T>: LinkedList where T : Comparable, T : Hashable {
+    typealias Node = LinkedListNode<T>
+    typealias Iterator = LinkedListIterator<T>
     
-    class Iterator: IteratorProtocol {
-        typealias Element = T
-        
-        var node: Node<T>?
-        
-        init(_ node: Node<T>?) {
-            self.node = node
-        }
-        
-        func next() -> T? {
-            let current = self.node
-            self.node = self.node?.next
-            return current?.value
-        }
-    }
-    
-    var description: String {
-        var result = "["
-        
-        var isFirst = true
-        
-        for node in self {
-            if isFirst {
-                isFirst = false
-                result += "\(node)"
-            } else {
-                result += ", \(node)"
-            }
-        }
-        
-        result += "]"
-        return result
-    }
-    
-    private(set) var first: Node<T>?
-    private(set) var last: Node<T>?
+    private(set) var first: Node?
+    private(set) var last: Node?
     
     init() {
         
@@ -80,6 +39,10 @@ struct SinglyLinkedList <T>: Sequence, CustomStringConvertible {
     
     subscript(_ index: Int) -> T {
         return node(at: index).value
+    }
+    
+    func copy() -> SinglyLinkedList {
+        return SinglyLinkedList(otherList: self)
     }
     
     mutating func append(_ value: T) {
@@ -141,8 +104,66 @@ struct SinglyLinkedList <T>: Sequence, CustomStringConvertible {
         fatalError("Out of bounds")
     }
     
-    func copy() -> SinglyLinkedList {
-        return SinglyLinkedList(otherList: self)
+    mutating func sort() {
+        guard let first = self.first else {
+            return
+        }
+        
+        let dummyNode = Node(value: first.value, next: nil) // Value is not important
+        
+        var last = dummyNode
+        var current: Node? = first
+        var next : Node? = nil
+        
+        while let currentNode = current {
+            next = currentNode.next
+            
+            // Find proper place
+            while let lastNext = last.next, lastNext.value < currentNode.value {
+                last = lastNext
+            }
+            
+            // Insert between last and last.next
+            currentNode.next = last.next
+            last.next = currentNode
+            
+            if currentNode.next == nil {
+                self.last = currentNode
+            }
+            
+            // Next step
+            current = next
+            last = dummyNode
+        }
+        
+        self.first = dummyNode.next
+    }
+    
+    mutating func removeDuplicates() {
+        var last: Node?
+        var current: Node? = self.first
+        
+        var cache = Set<T>()
+        
+        while let currentNode = current {
+            if cache.contains(currentNode.value) {
+                // Already seen, skip!
+                last?.next = currentNode.next
+                
+                if last?.next == nil {
+                    self.last = last
+                }
+            } else {
+                cache.insert(currentNode.value)
+                last = currentNode
+            }
+            
+            current = currentNode.next
+        }
+    }
+    
+    mutating func merge(with list: SinglyLinkedList) {
+        
     }
     
     func makeIterator() -> Iterator {
@@ -152,7 +173,7 @@ struct SinglyLinkedList <T>: Sequence, CustomStringConvertible {
 
 // MARK: Helpers
 extension SinglyLinkedList {
-    private func node(at index: Int) -> Node<T> {
+    private func node(at index: Int) -> Node {
         if index == 0, let first = self.first {
             return first
         }
@@ -161,7 +182,7 @@ extension SinglyLinkedList {
             fatalError("Out of bounds")
         }
         
-        var node: Node<T>? = self.first
+        var node: Node? = self.first
         
         for _ in 1...index {
             node = node?.next
@@ -174,7 +195,7 @@ extension SinglyLinkedList {
         fatalError("Out of bounds")
     }
     
-    private func makeNode(with value: T) -> Node<T> {
-        return Node<T>(value: value, next: nil)
+    private func makeNode(with value: T) -> Node {
+        return Node(value: value, next: nil)
     }
 }

@@ -22,6 +22,9 @@
 		99480918266900360046145E /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99480917266900360046145E /* BinarySearchTree.swift */; };
 		994C35D3265687490096EAAF /* FindMajorityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C35D2265687490096EAAF /* FindMajorityElement.swift */; };
 		9957C2BA2681E90E0029D3DE /* SinglyLinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957C2B92681E90E0029D3DE /* SinglyLinkedListTests.swift */; };
+		9957C2BC26820BF80029D3DE /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957C2BB26820BF80029D3DE /* LinkedList.swift */; };
+		9957C2BE26820D790029D3DE /* SortedSinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957C2BD26820D790029D3DE /* SortedSinglyLinkedList.swift */; };
+		9957C2C026820E170029D3DE /* SortedSinglyLinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957C2BF26820E170029D3DE /* SortedSinglyLinkedListTests.swift */; };
 		996CF5782655218C00CCB320 /* Find01BalancedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996CF5772655218C00CCB320 /* Find01BalancedArray.swift */; };
 		9987E555266FCCB30062FB6D /* SinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987E554266FCCB30062FB6D /* SinglyLinkedList.swift */; };
 		998DE7E32655450500CA1A9A /* FindMaxProductArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998DE7E22655450500CA1A9A /* FindMaxProductArray.swift */; };
@@ -108,6 +111,9 @@
 		99480917266900360046145E /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		994C35D2265687490096EAAF /* FindMajorityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMajorityElement.swift; sourceTree = "<group>"; };
 		9957C2B92681E90E0029D3DE /* SinglyLinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedListTests.swift; sourceTree = "<group>"; };
+		9957C2BB26820BF80029D3DE /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		9957C2BD26820D790029D3DE /* SortedSinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSinglyLinkedList.swift; sourceTree = "<group>"; };
+		9957C2BF26820E170029D3DE /* SortedSinglyLinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSinglyLinkedListTests.swift; sourceTree = "<group>"; };
 		996CF5772655218C00CCB320 /* Find01BalancedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find01BalancedArray.swift; sourceTree = "<group>"; };
 		9987E554266FCCB30062FB6D /* SinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedList.swift; sourceTree = "<group>"; };
 		998DE7E22655450500CA1A9A /* FindMaxProductArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMaxProductArray.swift; sourceTree = "<group>"; };
@@ -236,8 +242,11 @@
 		9987E553266FCCA20062FB6D /* LinkedList */ = {
 			isa = PBXGroup;
 			children = (
+				9957C2BB26820BF80029D3DE /* LinkedList.swift */,
 				9987E554266FCCB30062FB6D /* SinglyLinkedList.swift */,
+				9957C2BD26820D790029D3DE /* SortedSinglyLinkedList.swift */,
 				9957C2B92681E90E0029D3DE /* SinglyLinkedListTests.swift */,
+				9957C2BF26820E170029D3DE /* SortedSinglyLinkedListTests.swift */,
 			);
 			path = LinkedList;
 			sourceTree = "<group>";
@@ -580,6 +589,7 @@
 				99FB2915266909E400A34A6A /* DataInputStream.swift in Sources */,
 				99FB2913266909E400A34A6A /* DataInputStreamError.swift in Sources */,
 				99D3C724264EEF7800CDAB31 /* PFPosition.swift in Sources */,
+				9957C2BC26820BF80029D3DE /* LinkedList.swift in Sources */,
 				99FB291E266909E400A34A6A /* SimpleFileSystem.swift in Sources */,
 				99FB2919266909E400A34A6A /* TimeValue.swift in Sources */,
 				9957C2BA2681E90E0029D3DE /* SinglyLinkedListTests.swift in Sources */,
@@ -622,6 +632,7 @@
 				99BE41B52656C95B00A98277 /* FindMaxDifferencePairs.swift in Sources */,
 				99FB291D266909E400A34A6A /* TemporaryFileManager.swift in Sources */,
 				99FB291C266909E400A34A6A /* DataSize.swift in Sources */,
+				9957C2BE26820D790029D3DE /* SortedSinglyLinkedList.swift in Sources */,
 				99D3C71B264EEDC100CDAB31 /* FindSumPairs.swift in Sources */,
 				99FA0606266BB0E9006452F0 /* TestBinarySearchTree.swift in Sources */,
 				99FB2910266909E400A34A6A /* KeyboardResponder.swift in Sources */,
@@ -633,6 +644,7 @@
 				990BC4B52668DF9B009F50AB /* InsertionSort.swift in Sources */,
 				9914937D266E8EC000466174 /* BubbleSort.swift in Sources */,
 				990BC4BA2668DFA6009F50AB /* MergeSort.swift in Sources */,
+				9957C2C026820E170029D3DE /* SortedSinglyLinkedListTests.swift in Sources */,
 				99D3C6EE264EED9700CDAB31 /* LearnAlg.xcdatamodeld in Sources */,
 				99FB2923266909E400A34A6A /* PerformOnMain.swift in Sources */,
 				9927309A2656F8B700C1A7B0 /* FindMaxSumSubarray.swift in Sources */,

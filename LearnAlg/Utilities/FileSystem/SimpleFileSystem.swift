@@ -417,7 +417,7 @@ class SimpleFileSystem {
     }
 }
 
-protocol SimpleFileSystemDiskStateListener: class {
+protocol SimpleFileSystemDiskStateListener: AnyObject {
     func onDiskStateChange(isAccessible: Bool)
 }
 

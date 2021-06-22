@@ -12,6 +12,8 @@ class SinglyLinkedListTests {
         testInsert()
         testCopy()
         testCopyAndDelete()
+        testSorting()
+        testRemoveDuplicates()
     }
     
     func testInsert() {
@@ -41,7 +43,7 @@ class SinglyLinkedListTests {
         let listCopyA = list.copy()
         
         print("list = \(list)")
-        print("listCopyA = \(listCopyA)")
+        print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? "")")
     }
     
     func testCopyAndDelete() {
@@ -55,21 +57,106 @@ class SinglyLinkedListTests {
         var listCopyA = list.copy()
         
         print("list = \(list)")
-        print("listCopyA = \(listCopyA)")
+        print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? "")")
         
         listCopyA.delete(at: 0)
         
         print("delete node at 0")
-        print("listCopyA = \(listCopyA)")
+        print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? "")")
         
         listCopyA.delete(at: 1)
         
         print("delete node at 1")
-        print("listCopyA = \(listCopyA)")
+        print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? "")")
         
         listCopyA.insert("e", at: 2)
         
         print("insert 'e' at 2")
-        print("listCopyA = \(listCopyA)")
+        print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? "")")
+    }
+    
+    func testSorting() {
+        var list = SinglyLinkedList<Int>()
+        
+        list.append(1)
+        list.append(0)
+        list.append(20)
+        list.append(5)
+        
+        print("list = \(list)")
+        
+        list.sort()
+        
+        print("sorted list \(list), last = \(list.last?.value ?? -1)")
+        
+        list = SinglyLinkedList<Int>()
+        
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        
+        print("list = \(list)")
+        
+        list.sort()
+        
+        print("sorted list \(list), last = \(list.last?.value ?? -1)")
+        
+        list = SinglyLinkedList<Int>()
+        
+        list.append(4)
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        
+        print("list = \(list)")
+        
+        list.sort()
+        
+        print("sorted list \(list), last = \(list.last?.value ?? -1)")
+        
+        list = SinglyLinkedList<Int>()
+        
+        list.append(4)
+        
+        print("list = \(list)")
+        
+        list.sort()
+        
+        print("sorted list \(list), last = \(list.last?.value ?? -1)")
+    }
+    
+    func testRemoveDuplicates() {
+        var list = SinglyLinkedList<Int>()
+        
+        list.append(1)
+        list.append(0)
+        list.append(0)
+        list.append(0)
+        list.append(0)
+        list.append(0)
+        list.append(20)
+        list.append(5)
+        list.append(5)
+        
+        print("list = \(list)")
+        
+        list.removeDuplicates()
+        
+        print("list without duplicates = \(list), last = \(list.last?.value ?? -1)")
+        
+        list = SinglyLinkedList<Int>()
+        
+        list.append(1)
+        list.append(1)
+        list.append(0)
+        list.append(20)
+        list.append(5)
+        
+        print("list = \(list)")
+        
+        list.removeDuplicates()
+        
+        print("list without duplicates = \(list), last = \(list.last?.value ?? -1)")
     }
 }
