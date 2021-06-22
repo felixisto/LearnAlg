@@ -11,21 +11,7 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        var list = SinglyLinkedList<String>()
-        
-        list.append("a")
-        list.append("c")
-        
-        print("list[0] = \(list[0])")
-        print("list[1] = \(list[1])")
-        
-        list.insert("b", at: 1)
-        
-        print("list[0] = \(list[0])")
-        print("list[1] = \(list[1])")
-        print("list[2] = \(list[2])")
-        
-        TestBubbleSort().test()
+        SinglyLinkedListTests().testCopyAndDelete()
         return true
     }
 

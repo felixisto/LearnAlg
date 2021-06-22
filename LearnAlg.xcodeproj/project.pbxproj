@@ -21,6 +21,7 @@
 		993BFE62266F549A006A3846 /* StringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993BFE61266F549A006A3846 /* StringSearch.swift */; };
 		99480918266900360046145E /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99480917266900360046145E /* BinarySearchTree.swift */; };
 		994C35D3265687490096EAAF /* FindMajorityElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C35D2265687490096EAAF /* FindMajorityElement.swift */; };
+		9957C2BA2681E90E0029D3DE /* SinglyLinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957C2B92681E90E0029D3DE /* SinglyLinkedListTests.swift */; };
 		996CF5782655218C00CCB320 /* Find01BalancedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996CF5772655218C00CCB320 /* Find01BalancedArray.swift */; };
 		9987E555266FCCB30062FB6D /* SinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9987E554266FCCB30062FB6D /* SinglyLinkedList.swift */; };
 		998DE7E32655450500CA1A9A /* FindMaxProductArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998DE7E22655450500CA1A9A /* FindMaxProductArray.swift */; };
@@ -29,7 +30,6 @@
 		99A2851E265177A0007BBBF3 /* SortBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2851D265177A0007BBBF3 /* SortBinary.swift */; };
 		99A2852626517AD3007BBBF3 /* FindDuplicateElementLimited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2852526517AD3007BBBF3 /* FindDuplicateElementLimited.swift */; };
 		99A2852B2651802C007BBBF3 /* FindDuplicateElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A2852A2651802C007BBBF3 /* FindDuplicateElement.swift */; };
-		99BE41B02656C28C00A98277 /* RearangeZeroesToEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE41AF2656C28C00A98277 /* RearangeZeroesToEnd.swift */; };
 		99BE41B52656C95B00A98277 /* FindMaxDifferencePairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE41B42656C95B00A98277 /* FindMaxDifferencePairs.swift */; };
 		99CBF972266E5A9A004711B8 /* HeapSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CBF971266E5A9A004711B8 /* HeapSort.swift */; };
 		99D3C6E4264EED9700CDAB31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C6E3264EED9700CDAB31 /* AppDelegate.swift */; };
@@ -107,6 +107,7 @@
 		993BFE61266F549A006A3846 /* StringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSearch.swift; sourceTree = "<group>"; };
 		99480917266900360046145E /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		994C35D2265687490096EAAF /* FindMajorityElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMajorityElement.swift; sourceTree = "<group>"; };
+		9957C2B92681E90E0029D3DE /* SinglyLinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedListTests.swift; sourceTree = "<group>"; };
 		996CF5772655218C00CCB320 /* Find01BalancedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Find01BalancedArray.swift; sourceTree = "<group>"; };
 		9987E554266FCCB30062FB6D /* SinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedList.swift; sourceTree = "<group>"; };
 		998DE7E22655450500CA1A9A /* FindMaxProductArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMaxProductArray.swift; sourceTree = "<group>"; };
@@ -115,7 +116,6 @@
 		99A2851D265177A0007BBBF3 /* SortBinary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBinary.swift; sourceTree = "<group>"; };
 		99A2852526517AD3007BBBF3 /* FindDuplicateElementLimited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDuplicateElementLimited.swift; sourceTree = "<group>"; };
 		99A2852A2651802C007BBBF3 /* FindDuplicateElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDuplicateElement.swift; sourceTree = "<group>"; };
-		99BE41AF2656C28C00A98277 /* RearangeZeroesToEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RearangeZeroesToEnd.swift; path = ../../../../../RearangeZeroesToEnd.swift; sourceTree = "<group>"; };
 		99BE41B42656C95B00A98277 /* FindMaxDifferencePairs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMaxDifferencePairs.swift; sourceTree = "<group>"; };
 		99CBF971266E5A9A004711B8 /* HeapSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapSort.swift; sourceTree = "<group>"; };
 		99D3C6E0264EED9700CDAB31 /* LearnAlg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnAlg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +209,6 @@
 				990BC4B92668DFA6009F50AB /* MergeSort.swift */,
 				99CBF971266E5A9A004711B8 /* HeapSort.swift */,
 				9917285D2655A3420092E575 /* RearangeHighLowAltArray.swift */,
-				99BE41AF2656C28C00A98277 /* RearangeZeroesToEnd.swift */,
 			);
 			path = SortIntegers;
 			sourceTree = "<group>";
@@ -238,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				9987E554266FCCB30062FB6D /* SinglyLinkedList.swift */,
+				9957C2B92681E90E0029D3DE /* SinglyLinkedListTests.swift */,
 			);
 			path = LinkedList;
 			sourceTree = "<group>";
@@ -582,6 +582,7 @@
 				99D3C724264EEF7800CDAB31 /* PFPosition.swift in Sources */,
 				99FB291E266909E400A34A6A /* SimpleFileSystem.swift in Sources */,
 				99FB2919266909E400A34A6A /* TimeValue.swift in Sources */,
+				9957C2BA2681E90E0029D3DE /* SinglyLinkedListTests.swift in Sources */,
 				99FB2927266909E400A34A6A /* FileSystemUserLogging.swift in Sources */,
 				9992B29126501F0B005C0459 /* FindZeroSumSubarray.swift in Sources */,
 				99D3C734264EEFC200CDAB31 /* PathFindGraphWeightless.swift in Sources */,
@@ -596,7 +597,6 @@
 				99FB2917266909E400A34A6A /* AtomicValue.swift in Sources */,
 				993B36292654DCF2001C7650 /* FindLongestArraySum.swift in Sources */,
 				99D3C6E4264EED9700CDAB31 /* AppDelegate.swift in Sources */,
-				99BE41B02656C28C00A98277 /* RearangeZeroesToEnd.swift in Sources */,
 				99FB291F266909E400A34A6A /* TemporaryFile.swift in Sources */,
 				99D3C72E264EEF8B00CDAB31 /* PFQueue.swift in Sources */,
 				99FB2914266909E400A34A6A /* DataOutputStream.swift in Sources */,
