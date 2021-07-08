@@ -15,8 +15,11 @@ class TestBinarySearchTree {
         print("test2()")
         test2()
         
-        print("test3()")
-        test3()
+        print("testBuildBSTFromArray()")
+        testBuildBSTFromArray()
+        
+        testTraversal()
+        testInsert()
     }
     
     func test1() {
@@ -110,7 +113,7 @@ class TestBinarySearchTree {
         print("tree2:\n\(tree2)")
     }
     
-    func test3() {
+    func testBuildBSTFromArray() {
         let array1 = [15, 10, 20, 8, 12, 18, 25]
         var tree = BinarySearchTree(from: array1)
         print("make tree from array \(array1) ---> \(tree)")
@@ -120,5 +123,54 @@ class TestBinarySearchTree {
         tree = BinarySearchTree(from: array2)
         print("make tree from array \(array2) ---> \(tree)")
         print("is BST? \(tree.isBinarySearchTree)")
+    }
+    
+    func testTraversal() {
+        let array1 = [15, 10, 20, 8, 12, 18, 25]
+        let tree = BinarySearchTree(from: array1)
+        
+        // Expected result: ((8) <- 10 -> (12)) <- 15 -> ((18) <- 20 -> (25))
+        print("tree = \(tree)")
+        
+        // Expected result: [8, 10, 12, 15, 18, 20, 25]
+        print("in order tree = \(tree.accumulateAll(order: .inOrder))")
+        
+        // Expected result: [15, 10, 8, 12, 20, 18, 25]
+        print("pre order tree = \(tree.accumulateAll(order: .preOrder))")
+        
+        // Expected result: [8, 12, 10, 18, 25, 20, 15]
+        print("post order tree = \(tree.accumulateAll(order: .postOrder))")
+        
+        // Expected result: [8, 10, 12, 15, 18, 20, 25]
+        print("in order tree = \(tree._accumulateAll_Iterative(order: .inOrder))")
+        
+        // Expected result: [15, 10, 8, 12, 20, 18, 25]
+        print("pre order tree = \(tree._accumulateAll_Iterative(order: .preOrder))")
+        
+        // Expected result: [8, 12, 10, 18, 25, 20, 15]
+        print("post order tree = \(tree._accumulateAll_Iterative(order: .postOrder))")
+    }
+    
+    func testInsert() {
+        let array1 = [15, 10, 20, 8, 12, 18, 25]
+        let tree = BinarySearchTree(from: array1)
+        
+        // Expected result: ((8) <- 10 -> (12)) <- 15 -> ((18) <- 20 -> (25))
+        print("tree = \(tree)")
+        print("tree = \(tree.accumulateAll(order: .inOrder))")
+        
+        print("insert 27")
+        tree.insert(value: 27)
+        
+        // Expected result: ((8) <- 10 -> (12)) <- 15 -> ((18) <- 20 -> (25 -> (27)))
+        print("tree = \(tree)")
+        print("tree = \(tree.accumulateAll(order: .inOrder))")
+        
+        print("insert 26")
+        tree._insertNonRecursive(value: 26)
+        
+        // Expected result: ((8) <- 10 -> (12)) <- 15 -> ((18) <- 20 -> (25 -> ((26) <- 27)))
+        print("tree = \(tree)")
+        print("tree = \(tree.accumulateAll(order: .inOrder))")
     }
 }

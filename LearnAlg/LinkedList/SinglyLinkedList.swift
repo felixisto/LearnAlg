@@ -162,8 +162,24 @@ struct SinglyLinkedList <T>: LinkedList where T : Comparable, T : Hashable {
         }
     }
     
-    mutating func merge(with list: SinglyLinkedList) {
+    mutating func merge(with otherNode: Node) {
+        // Attach to the end of this
+        if self.first != nil {
+            self.last?.next = otherNode
+        } else {
+            self.first = otherNode
+        }
         
+        // Update last
+        self.last = otherNode
+        
+        var currentNode = otherNode
+        
+        while let next = currentNode.next {
+            self.last = next
+            
+            currentNode = next
+        }
     }
     
     func makeIterator() -> Iterator {

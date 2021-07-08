@@ -27,17 +27,32 @@ protocol LinkedList: Sequence, CustomStringConvertible {
     mutating func sort()
     mutating func removeDuplicates()
     
-    // After merge, both lists should have identical node structure.
-    mutating func merge(with list: Self)
+    mutating func merge(with otherNode: LinkedListNode<T>)
 }
 
-class LinkedListNode <T> where T : Comparable {
+class LinkedListNode <T> : CustomStringConvertible, Hashable where T : Comparable {
+    var description: String {
+        if let next = next {
+            return "<\(value) -> \(next.value)>"
+        } else {
+            return "<\(value) -> nil>"
+        }
+    }
+    
     var value: T
     var next: LinkedListNode<T>?
     
     init(value: T, next: LinkedListNode<T>?) {
         self.value = value
         self.next = next
+    }
+    
+    static func == (lhs: LinkedListNode<T>, rhs: LinkedListNode<T>) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }
 
@@ -99,5 +114,49 @@ extension LinkedList {
                 index += 1
             }
         }
+    }
+}
+
+extension LinkedListNode {
+    // ZOMG! Floyd’s Cycle Detection Algorithm!!1!
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    func findFirstCycleReference() -> (first: LinkedListNode, last: LinkedListNode)? {
+        var slow: LinkedListNode? = self
+        var fast: LinkedListNode? = self
+        
+        while let s = slow, let f = fast {
+            slow = s.next
+            fast = f.next?.next
+            
+            // Works with only one node referring to itself
+            if s === f {
+                return (s, f)
+            }
+        }
+        
+        return nil
+    }
+    
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    func findFirstCycleReferenceWithHashing() -> (first: LinkedListNode, last: LinkedListNode)? {
+        var cache = Set<LinkedListNode>()
+        
+        var current: LinkedListNode? = self
+        var previous: LinkedListNode?
+        
+        while let node = current {
+            if cache.contains(node) {
+                return (node, previous!)
+            }
+            
+            cache.insert(node)
+            
+            previous = current
+            current = current?.next
+        }
+        
+        return nil
     }
 }

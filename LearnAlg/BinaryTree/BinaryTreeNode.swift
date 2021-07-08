@@ -7,51 +7,13 @@
 
 import Foundation
 
-protocol BinaryTreeNode: AnyObject, CustomStringConvertible {
-    var value: Int { get }
+class BinaryTreeNode: CustomStringConvertible, Hashable {
+    var value: Int
     
-    var parent: BinaryTreeNode? { get set }
-    var left: BinaryTreeNode? { get set }
-    var right: BinaryTreeNode? { get set }
+    weak var parent: BinaryTreeNode?
+    var left: BinaryTreeNode?
+    var right: BinaryTreeNode?
     
-    var isLeaf: Bool { get }
-    var hasTwoChildren: Bool { get }
-    var isLeftChild: Bool { get }
-    var isRightChild: Bool { get }
-    
-    var height: Int { get }
-    var count: Int { get }
-    
-    var anyChild: BinaryTreeNode? { get }
-    var minNode: BinaryTreeNode { get }
-    var maxNode: BinaryTreeNode { get }
-    
-    // MARK: Hierarchy
-    
-    @discardableResult
-    func makeLeftChild(withValue value: Int) -> BinaryTreeNode
-    
-    @discardableResult
-    func makeRightChild(withValue value: Int) -> BinaryTreeNode
-    
-    // Properly removes the node from its parent.
-    func remove()
-    
-    // MARK: Query
-    
-    func contains(value: Int) -> Bool
-    func findNode(with value: Int) -> BinaryTreeNode?
-    func accumulateAll() -> [Int]
-    
-    // MARK: Mutate
-    
-    @discardableResult
-    func insert(value: Int) -> BinaryTreeNode?
-    func delete(value: Int)
-}
-
-// MARK: Properties
-extension BinaryTreeNode {
     var description: String {
         var s = ""
         
@@ -99,106 +61,6 @@ extension BinaryTreeNode {
     var anyChild: BinaryTreeNode? {
         return left ?? right
     }
-}
-
-// MARK: Query
-extension BinaryTreeNode {
-    func contains(value: Int) -> Bool {
-        return findNode(with: value) != nil
-    }
-    
-    func findNode(with value: Int) -> BinaryTreeNode? {
-        func find(node: BinaryTreeNode) -> BinaryTreeNode? {
-            if node.value == value {
-                return node
-            }
-            
-            if value < node.value {
-                if let left = node.left {
-                    return find(node: left)
-                }
-            } else {
-                if let right = node.right {
-                    return find(node: right)
-                }
-            }
-            
-            return nil
-        }
-        
-        return find(node: self)
-    }
-    
-    func accumulateAll() -> [Int] {
-        var values: [Int] = []
-        
-        func postOrderTraversal(node: BinaryTreeNode?) {
-            guard let node = node else { return }
-            postOrderTraversal(node: node.left)
-            postOrderTraversal(node: node.right)
-            values.append(node.value)
-        }
-        
-        postOrderTraversal(node: self)
-        
-        return values
-    }
-}
-
-// MARK: Mutation
-extension BinaryTreeNode {
-    // Average time complexity: O(h)
-    // Worst time complexity: O(n)
-    @discardableResult
-    func insert(value: Int) -> BinaryTreeNode? {
-        func insert(into parent: BinaryTreeNode) -> BinaryTreeNode {
-            if value < parent.value {
-                if let left = parent.left {
-                    return insert(into: left)
-                } else {
-                    return parent.makeLeftChild(withValue: value)
-                }
-            } else {
-                if let right = parent.right {
-                    return insert(into: right)
-                } else {
-                    return parent.makeRightChild(withValue: value)
-                }
-            }
-        }
-        
-        return insert(into: self)
-    }
-    
-    func delete(value: Int) {
-        func find(node: BinaryTreeNode) {
-            if node.value == value {
-                node.remove()
-                return
-            }
-            
-            if value < node.value {
-                if let left = node.left {
-                    find(node: left)
-                }
-            } else {
-                if let right = node.right {
-                    find(node: right)
-                }
-            }
-        }
-        
-        find(node: self)
-    }
-}
-
-// Mutable value.
-class BinarySearchTreeNode: BinaryTreeNode {
-    var value: Int
-    
-    weak var parent: BinaryTreeNode?
-    var left: BinaryTreeNode?
-    var right: BinaryTreeNode?
     
     // The given tree node is assumed to be ordered.
     init(parent: BinaryTreeNode?=nil, value: Int) {
@@ -234,6 +96,16 @@ class BinarySearchTreeNode: BinaryTreeNode {
         }
         
         return node
+    }
+    
+    // MARK: Hashable
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+    
+    static func == (lhs: BinaryTreeNode, rhs: BinaryTreeNode) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
     
     // MARK: Hierarchy
@@ -289,117 +161,147 @@ class BinarySearchTreeNode: BinaryTreeNode {
     }
 }
 
-// Immutable value.
-// Implementation is nearly identical to the mutable one. remove() is significantly different.
-class ImmutableBinarySearchTreeNode: BinaryTreeNode {
-    let value: Int
-    
-    weak var parent: BinaryTreeNode?
-    var left: BinaryTreeNode?
-    var right: BinaryTreeNode?
-    
-    // The given tree node is assumed to be ordered.
-    init(parent: BinaryTreeNode?=nil, value: Int) {
-        self.parent = parent
-        self.value = value
+enum BinaryTreeNodeTraverseOrder {
+    // For Tree
+    // ((8) <- 10 -> (12)) <- 15 -> ((18) <- 20 -> (25))
+    // we get these values
+    case preOrder // [15, 10, 8, 12, 20, 18, 25]
+    case inOrder // [8, 10, 12, 15, 18, 20, 25]
+    case postOrder // [8, 12, 10, 18, 25, 20, 15]
+}
+
+// MARK: Query
+extension BinaryTreeNode {
+    func contains(value: Int) -> Bool {
+        return findNode(with: value) != nil
     }
     
-    // Finds the node with the smallest value starting from the given node.
-    var minNode: BinaryTreeNode {
-        var node: BinaryTreeNode = self
-        
-        while case let next? = node.left {
-            node = next
-        }
-        
-        return node
-    }
-    
-    // Finds the node with the largest value starting from the given node.
-    var maxNode: BinaryTreeNode {
-        var node: BinaryTreeNode = self
-        
-        while case let next? = node.right {
-            node = next
-        }
-        
-        return node
-    }
-    
-    // MARK: Hierarchy
-    
-    @discardableResult
-    func makeLeftChild(withValue value: Int) -> BinaryTreeNode {
-        let node = BinarySearchTreeNode(parent: self, value: value)
-        self.left = node
-        return node
-    }
-    
-    @discardableResult
-    func makeRightChild(withValue value: Int) -> BinaryTreeNode {
-        let node = BinarySearchTreeNode(parent: self, value: value)
-        self.right = node
-        return node
-    }
-    
-    // Properly removes the node from its parent.
-    // This node instance should be discarded after this operation.
-    func remove() {
-        let successor: BinaryTreeNode?
-        
-        if let left = self.left {
-            if let right = self.right {
-                successor = removeWithTwoChildren(left: left, right: right)
-            } else {
-                successor = left
-            }
-        } else if let right = self.right {
-            successor = right
-        } else {
-            successor = nil
-        }
-        
-        replaceSelf(with: successor)
-    }
-    
-    private func removeWithTwoChildren(left originalLeft: BinaryTreeNode,
-                                       right originalRight: BinaryTreeNode) -> BinaryTreeNode {
-        let successor = originalRight.minNode
-        
-        // Recursively remove
-        successor.remove()
-        
-        // Begin replacement
-        // The successor will copy the children of the node being replaced
-        successor.left = originalLeft
-        originalLeft.parent = successor
-        
-        // Update successor right
-        if originalRight !== successor {
-            successor.right = originalRight
-            originalRight.parent = successor
-        } else {
-            // In this case, the successor is simply the right child
-            // Nullify the future right child, otherwise a circular reference will be created
-            successor.right = nil
-        }
-        
-        return successor
-    }
-    
-    private func replaceSelf(with replacement: BinaryTreeNode?) {
-        if let parent = self.parent {
-            if isLeftChild {
-                parent.left = replacement
-            } else {
-                parent.right = replacement
+    func findNode(with value: Int) -> BinaryTreeNode? {
+        func find(node: BinaryTreeNode) -> BinaryTreeNode? {
+            if node.value == value {
+                return node
             }
             
-            replacement?.parent = parent
+            if value < node.value {
+                if let left = node.left {
+                    return find(node: left)
+                }
+            } else {
+                if let right = node.right {
+                    return find(node: right)
+                }
+            }
+            
+            return nil
         }
         
-        self.parent = nil
-        self.left = nil
-        self.right = nil
+        return find(node: self)
+    }
+    
+    func accumulateAll(order: BinaryTreeNodeTraverseOrder) -> [Int] {
+        var values: [Int] = []
+        
+        func preOrderTraversal(node: BinaryTreeNode?) {
+            guard let node = node else { return }
+            values.append(node.value)
+            preOrderTraversal(node: node.left)
+            preOrderTraversal(node: node.right)
+        }
+        
+        func inOrderTraversal(node: BinaryTreeNode?) {
+            guard let node = node else { return }
+            inOrderTraversal(node: node.left)
+            values.append(node.value)
+            inOrderTraversal(node: node.right)
+        }
+        
+        func postOrderTraversal(node: BinaryTreeNode?) {
+            guard let node = node else { return }
+            postOrderTraversal(node: node.left)
+            postOrderTraversal(node: node.right)
+            values.append(node.value)
+        }
+        
+        switch order {
+        case .preOrder:
+            preOrderTraversal(node: self)
+        case .inOrder:
+            inOrderTraversal(node: self)
+        case .postOrder:
+            postOrderTraversal(node: self)
+        }
+        
+        return values
+    }
+    
+    func _accumulateAll_Iterative(order: BinaryTreeNodeTraverseOrder) -> [Int] {
+        var values: [Int] = []
+        
+        var stack = Stack<BinaryTreeNode>()
+        
+        func preOrderTraversal() {
+            stack.push(self)
+            
+            while let top = stack.popSafely() {
+                values.append(top.value)
+                
+                if let right = top.right {
+                    stack.push(right)
+                }
+                
+                if let left = top.left {
+                    stack.push(left)
+                }
+            }
+        }
+        
+        func inOrderTraversal() {
+            var current: BinaryTreeNode? = self
+            
+            while !stack.isEmpty || current != nil {
+                if let c = current {
+                    stack.push(c)
+                    
+                    current = c.left
+                } else {
+                    current = stack.pop()
+                    
+                    if let value = current?.value {
+                        values.append(value)
+                    }
+                    
+                    current = current?.right
+                }
+            }
+        }
+        
+        func postOrderTraversal() {
+            stack.push(self)
+            
+            while let top = stack.popSafely() {
+                values.append(top.value)
+                
+                if let left = top.left {
+                    stack.push(left)
+                }
+                
+                if let right = top.right {
+                    stack.push(right)
+                }
+            }
+            
+            values.reverse()
+        }
+        
+        switch order {
+        case .preOrder:
+            preOrderTraversal()
+        case .inOrder:
+            inOrderTraversal()
+        case .postOrder:
+            postOrderTraversal()
+        }
+        
+        return values
     }
 }

@@ -136,17 +136,11 @@ struct SortedSinglyLinkedList <T>: LinkedList where T : Numeric, T : Comparable,
         }
     }
     
-    mutating func merge(with list: SortedSinglyLinkedList) {
-        guard let first = self.first ?? list.first else {
-            return
-        }
-        
-        self.last = nil
-        
+    mutating func merge(with otherNode: Node) {
         var firstA = self.first
-        var firstB = list.first
+        var firstB: Node? = otherNode
         
-        let dummy = Node(value: first.value, next: nil) // Value is not important
+        let dummy = Node(value: otherNode.value, next: nil) // Value is not important
         var tail: Node? = dummy
         
         while true {
@@ -179,6 +173,7 @@ struct SortedSinglyLinkedList <T>: LinkedList where T : Numeric, T : Comparable,
         
         self.first = dummy.next
         
+        // Update last node
         var currentNode = self.first
         
         while true {

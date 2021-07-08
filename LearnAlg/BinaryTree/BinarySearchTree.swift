@@ -19,14 +19,14 @@ class BinarySearchTree: BinarySearchTreeNode {
     }
     
     var allValues: [Int] {
-        return accumulateAll()
+        return accumulateAll(order: .inOrder)
     }
     
-    var height: Int {
+    override var height: Int {
         return 1 + super.height
     }
     
-    var count: Int {
-        return accumulateAll().count
+    override var count: Int {
+        return accumulateAll(order: .inOrder).count
     }
 }

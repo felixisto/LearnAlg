@@ -8,88 +8,132 @@
 import Foundation
 
 class SortedSinglyLinkedListTests {
+    typealias List = SortedSinglyLinkedList
+    
     func test() {
         testInsert()
         testCopy()
+        testDelete()
         testCopyAndDelete()
         testRemoveDuplicates()
-        testMerge() 
+        testMerge()
     }
     
     func testInsert() {
-        var list = SortedSinglyLinkedList<Int>()
+        var list = List<Int>()
         
-        list.append(1)
         list.append(0)
-        
-        print("list[0] = \(list[0])")
-        print("list[1] = \(list[1])")
-        
-        print("append '2'")
         list.append(2)
         
+        // Expected output: 0
         print("list[0] = \(list[0])")
+        
+        // Expected output: 2
         print("list[1] = \(list[1])")
+        
+        list.append(1)
+        print("append 1")
+        
+        // Expected output: 0
+        print("list[0] = \(list[0])")
+        
+        // Expected output: 1
+        print("list[1] = \(list[1])")
+        
+        // Expected output: 2
         print("list[2] = \(list[2])")
     }
     
     func testCopy() {
-        var list = SortedSinglyLinkedList<Int>()
+        var list = List<Int>()
         
-        list.append(1)
         list.append(0)
-        list.append(20)
-        list.append(5)
+        list.append(1)
+        list.append(2)
+        list.append(3)
         
         let listCopyA = list.copy()
         
+        // Expected output: [0, 1, 2, 3]
         print("list = \(list)")
+        
+        // Expected output: [0, 1, 2, 3], last = 3
         print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
     }
     
-    func testCopyAndDelete() {
-        var list = SortedSinglyLinkedList<Int>()
+    func testDelete() {
+        var list = List<Int>()
         
-        list.append(1)
         list.append(0)
-        list.append(20)
-        list.append(5)
+        list.append(1)
+        
+        // Expected output: [0, 1]
+        print("list = \(list), last = \(list.last?.value ?? -1)")
+        
+        list.delete(at: 0)
+        print("delete element at index 0")
+        
+        // Expected output: [1], last = 1
+        print("list = \(list), last = \(list.last?.value ?? -1)")
+        
+        list.delete(at: 0)
+        print("delete element at index 0")
+        
+        // Expected output: [], last = nil
+        print("list = \(list), last = \(String(describing: list.last?.value))")
+        
+        list.append(0)
+        print("append 0")
+        
+        // Expected output: [0], last = 0
+        print("list = \(list), last = \(list.last?.value ?? -1)")
+    }
+    
+    func testCopyAndDelete() {
+        var list = List<Int>()
+        
+        list.append(0)
+        list.append(1)
+        list.append(2)
+        list.append(3)
         
         var listCopyA = list.copy()
         
+        // Expected output: [0, 1, 2, 3]
         print("list = \(list)")
+        
+        // Expected output: [0, 1, 2, 3], last = 3
         print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
         
         listCopyA.delete(at: 0)
         
         print("delete node at 0")
+        
+        // Expected output: [1, 2, 3], last = 3
         print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
         
         listCopyA.delete(at: 1)
         
         print("delete node at 1")
+        
+        // Expected output: [1, 3], last = 3
         print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
         
-        listCopyA.append(6)
+        listCopyA.append(4)
+        print("append 4")
         
-        print("append '6'")
+        // Expected output: [1, 3, 4], last = 4
         print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
         
-        listCopyA.append(6)
+        listCopyA.append(2)
+        print("append 2")
         
-        print("append '6'")
-        print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
-        
-        listCopyA.deleteAll { index, value in
-            value == 6
-        }
-        
-        print("delete all '6' values")
+        // Expected output: [1, 2, 3, 4], last = 4
         print("listCopyA = \(listCopyA), last = \(listCopyA.last?.value ?? -1)")
     }
     
     func testRemoveDuplicates() {
-        var list = SortedSinglyLinkedList<Int>()
+        var list = List<Int>()
         
         list.append(1)
         list.append(0)
@@ -101,13 +145,15 @@ class SortedSinglyLinkedListTests {
         list.append(5)
         list.append(5)
         
+        // Expected output: [1, 0, 0, 0, 0, 0, 20, 5, 5]
         print("list = \(list)")
         
         list.removeDuplicates()
         
+        // Expected output: [1, 0, 20, 5], last = 5
         print("list without duplicates = \(list), last = \(list.last?.value ?? -1)")
         
-        list = SortedSinglyLinkedList<Int>()
+        list = List<Int>()
         
         list.append(1)
         list.append(1)
@@ -115,41 +161,54 @@ class SortedSinglyLinkedListTests {
         list.append(20)
         list.append(5)
         
+        // Expected output: [1, 1, 0, 20, 5]
         print("list = \(list)")
         
         list.removeDuplicates()
         
+        // Expected output: [1, 0, 20, 5], last = 5
         print("list without duplicates = \(list), last = \(list.last?.value ?? -1)")
     }
     
     func testMerge() {
-        var listA = SortedSinglyLinkedList<Int>()
+        var listA = List<Int>()
         
         listA.append(0)
         listA.append(2)
         listA.append(4)
         
-        var listB = SortedSinglyLinkedList<Int>()
+        var listB = List<Int>()
         
         listB.append(-1)
         listB.append(1)
         listB.append(3)
         
+        // Expected output: [0, 2, 4]
         print("listA = \(listA)")
+        
+        // Expected output: [-1, 1, 3]
         print("listB = \(listB)")
         
-        listA.merge(with: listB)
+        listA.merge(with: listB.first!)
         
+        // Expected output: [0, 2, 4, -1, 1, 3], last = 3
         print("merged lists = \(listA), last = \(listA.last?.value ?? -1)")
         
-        var listC = SortedSinglyLinkedList<Int>()
+        var listC = List<Int>()
         listC.append(0)
         
-        print("listC = \(listA)")
-        print("listD is empty")
+        var listD = List<Int>()
+        listD.append(1)
         
-        listC.merge(with: SortedSinglyLinkedList<Int>())
+        // Expected output: [0]
+        print("listC = \(listC)")
         
+        // Expected output: [1]
+        print("listD = \(listD)")
+        
+        listC.merge(with: listD.first!)
+        
+        // Expected output: [0, 1], last = 1
         print("merged lists = \(listC), last = \(listC.last?.value ?? -1)")
     }
 }
