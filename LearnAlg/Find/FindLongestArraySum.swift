@@ -13,6 +13,8 @@ import Foundation
  */
 class TestFindLongestArraySum {
     func test() {
+        print(#function)
+        
         let naive = FindLongestArraySumNaive()
         let cache = FindLongestArraySumCache()
         

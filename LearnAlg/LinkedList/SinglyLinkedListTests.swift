@@ -11,6 +11,8 @@ class SinglyLinkedListTests {
     typealias List = SinglyLinkedList
     
     func test() {
+        print(#function)
+        
         testInsert()
         testCopy()
         testDelete()
@@ -21,6 +23,8 @@ class SinglyLinkedListTests {
     }
     
     func testInsert() {
+        print(#function)
+        
         var list = List<String>()
         
         list.append("a")
@@ -46,6 +50,8 @@ class SinglyLinkedListTests {
     }
     
     func testCopy() {
+        print(#function)
+        
         var list = List<String>()
         
         list.append("a")
@@ -63,6 +69,8 @@ class SinglyLinkedListTests {
     }
     
     func testDelete() {
+        print(#function)
+        
         var list = List<Int>()
         
         list.append(0)
@@ -91,6 +99,8 @@ class SinglyLinkedListTests {
     }
     
     func testCopyAndDelete() {
+        print(#function)
+        
         var list = List<String>()
         
         list.append("a")
@@ -129,6 +139,8 @@ class SinglyLinkedListTests {
     }
     
     func testSorting() {
+        print(#function)
+        
         var list = List<Int>()
         
         list.append(1)
@@ -188,6 +200,8 @@ class SinglyLinkedListTests {
     }
     
     func testRemoveDuplicates() {
+        print(#function)
+        
         var list = List<Int>()
         
         list.append(1)
@@ -226,6 +240,8 @@ class SinglyLinkedListTests {
     }
     
     func testMerge() {
+        print(#function)
+        
         var listA = List<Int>()
         
         listA.append(0)

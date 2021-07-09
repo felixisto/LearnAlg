@@ -55,6 +55,8 @@
 		99D3C734264EEFC200CDAB31 /* PathFindGraphWeightless.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C733264EEFC200CDAB31 /* PathFindGraphWeightless.swift */; };
 		99D3C739264EEFE500CDAB31 /* PathFindGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D3C738264EEFE500CDAB31 /* PathFindGraph.swift */; };
 		99DF2C5926977C31008B3F5D /* LinkedListNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DF2C5826977C31008B3F5D /* LinkedListNodeTests.swift */; };
+		99E834D3269883840031BDE6 /* HashTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E834D2269883840031BDE6 /* HashTable.swift */; };
+		99E834D52698838D0031BDE6 /* HashTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E834D42698838D0031BDE6 /* HashTableTests.swift */; };
 		99EEEB48266CC2E4008B4E9E /* BinarySearchTree+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EEEB47266CC2E4008B4E9E /* BinarySearchTree+Build.swift */; };
 		99FA0606266BB0E9006452F0 /* TestBinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA0605266BB0E9006452F0 /* TestBinarySearchTree.swift */; };
 		99FB2910266909E400A34A6A /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB28F1266909E400A34A6A /* KeyboardResponder.swift */; };
@@ -155,6 +157,8 @@
 		99D3C733264EEFC200CDAB31 /* PathFindGraphWeightless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFindGraphWeightless.swift; sourceTree = "<group>"; };
 		99D3C738264EEFE500CDAB31 /* PathFindGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFindGraph.swift; sourceTree = "<group>"; };
 		99DF2C5826977C31008B3F5D /* LinkedListNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListNodeTests.swift; sourceTree = "<group>"; };
+		99E834D2269883840031BDE6 /* HashTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTable.swift; sourceTree = "<group>"; };
+		99E834D42698838D0031BDE6 /* HashTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTableTests.swift; sourceTree = "<group>"; };
 		99EEEB47266CC2E4008B4E9E /* BinarySearchTree+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinarySearchTree+Build.swift"; sourceTree = "<group>"; };
 		99FA0605266BB0E9006452F0 /* TestBinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBinarySearchTree.swift; sourceTree = "<group>"; };
 		99FB28F1266909E400A34A6A /* KeyboardResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				99D3C6E3264EED9700CDAB31 /* AppDelegate.swift */,
 				99D3C6E5264EED9700CDAB31 /* SceneDelegate.swift */,
 				99D3C6E7264EED9700CDAB31 /* ViewController.swift */,
+				99E834D12698836C0031BDE6 /* Hashing */,
 				99B26E0026835AE300B09018 /* Stack */,
 				9987E553266FCCA20062FB6D /* LinkedList */,
 				993BFE60266F548C006A3846 /* String */,
@@ -389,6 +394,15 @@
 				99D3C72D264EEF8B00CDAB31 /* PFQueue.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		99E834D12698836C0031BDE6 /* Hashing */ = {
+			isa = PBXGroup;
+			children = (
+				99E834D2269883840031BDE6 /* HashTable.swift */,
+				99E834D42698838D0031BDE6 /* HashTableTests.swift */,
+			);
+			path = Hashing;
 			sourceTree = "<group>";
 		};
 		99FB28EF266909E400A34A6A /* Utilities */ = {
@@ -618,6 +632,7 @@
 			files = (
 				99A2852626517AD3007BBBF3 /* FindDuplicateElementLimited.swift in Sources */,
 				99DF2C5926977C31008B3F5D /* LinkedListNodeTests.swift in Sources */,
+				99E834D3269883840031BDE6 /* HashTable.swift in Sources */,
 				99FB2915266909E400A34A6A /* DataInputStream.swift in Sources */,
 				99FB2913266909E400A34A6A /* DataInputStreamError.swift in Sources */,
 				99D3C724264EEF7800CDAB31 /* PFPosition.swift in Sources */,
@@ -644,6 +659,7 @@
 				99FB291F266909E400A34A6A /* TemporaryFile.swift in Sources */,
 				99D3C72E264EEF8B00CDAB31 /* PFQueue.swift in Sources */,
 				99FB2914266909E400A34A6A /* DataOutputStream.swift in Sources */,
+				99E834D52698838D0031BDE6 /* HashTableTests.swift in Sources */,
 				99A2852B2651802C007BBBF3 /* FindDuplicateElement.swift in Sources */,
 				99FB2918266909E400A34A6A /* SimpleLock.swift in Sources */,
 				994C35D3265687490096EAAF /* FindMajorityElement.swift in Sources */,

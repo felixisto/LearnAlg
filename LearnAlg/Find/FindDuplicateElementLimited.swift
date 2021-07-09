@@ -14,6 +14,8 @@ import Foundation
  */
 class TestFindDuplicateElementLimited {
     func test() {
+        print(#function)
+        
         let hashing = FindDuplicateElementLimitedWithHashing()
         let constantSpace = FindDuplicateElementLimitedWithConstantSpace()
         

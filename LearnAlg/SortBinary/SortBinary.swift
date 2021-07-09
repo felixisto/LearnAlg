@@ -9,6 +9,8 @@ import Foundation
 
 class TestSortBinary {
     func test() {
+        print(#function)
+        
         let sort = SortBinary()
         
         let data1 = [1, 0, 1, 0, 1, 0, 0, 1]

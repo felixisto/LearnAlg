@@ -9,20 +9,18 @@ import Foundation
 
 class TestBinarySearchTree {
     func test() {
-        print("test1()")
+        print(#function)
+        
         test1()
-        
-        print("test2()")
         test2()
-        
-        print("testBuildBSTFromArray()")
         testBuildBSTFromArray()
-        
         testTraversal()
         testInsert()
     }
     
     func test1() {
+        print(#function)
+        
         let tree1 = BinarySearchTree(value: 7)
         tree1.makeLeftChild(withValue: 3)
         tree1.makeRightChild(withValue: 10)
@@ -80,6 +78,8 @@ class TestBinarySearchTree {
     }
     
     func test2() {
+        print(#function)
+        
         let tree2 = BinarySearchTree(value: 7)
         tree2.makeLeftChild(withValue: 3)
         tree2.makeRightChild(withValue: 10)
@@ -114,6 +114,8 @@ class TestBinarySearchTree {
     }
     
     func testBuildBSTFromArray() {
+        print(#function)
+        
         let array1 = [15, 10, 20, 8, 12, 18, 25]
         var tree = BinarySearchTree(from: array1)
         print("make tree from array \(array1) ---> \(tree)")
@@ -126,6 +128,8 @@ class TestBinarySearchTree {
     }
     
     func testTraversal() {
+        print(#function)
+        
         let array1 = [15, 10, 20, 8, 12, 18, 25]
         let tree = BinarySearchTree(from: array1)
         
@@ -152,6 +156,8 @@ class TestBinarySearchTree {
     }
     
     func testInsert() {
+        print(#function)
+        
         let array1 = [15, 10, 20, 8, 12, 18, 25]
         let tree = BinarySearchTree(from: array1)
         

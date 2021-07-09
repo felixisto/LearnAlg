@@ -45,10 +45,4 @@ class PerformOnMain {
         
         queue.asyncAfter(deadline: DispatchTime.now() + delaySec, execute: callback)
     }
-    
-    func test() {
-        Self.async {
-            
-        }
-    }
 }

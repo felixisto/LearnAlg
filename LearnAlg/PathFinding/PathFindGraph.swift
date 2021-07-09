@@ -9,6 +9,8 @@ import Foundation
 
 class PathFindGraph {
     func test() {
+        print(#function)
+        
         let a = PFPosition(name: "A")
         let b = PFPosition(name: "B")
         let c = PFPosition(name: "C")

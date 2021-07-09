@@ -11,10 +11,14 @@ class LinkedListNodeTests {
     typealias Node = LinkedListNode
     
     func test() {
+        print(#function)
+        
         testFindCycleReference()
     }
     
     func testFindCycleReference() {
+        print(#function)
+        
         let a = Node(value: 0, next: nil)
         let b = Node(value: 1, next: nil)
         let c = Node(value: 2, next: nil)

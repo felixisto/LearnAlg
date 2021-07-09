@@ -19,6 +19,8 @@ import Foundation
  */
 class TestFindSumPairs {
     func test() {
+        print(#function)
+        
         let bruteForce = FindSumPairsBruteForce()
         let hashing = FindSumPairsWithHashing()
         

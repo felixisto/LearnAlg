@@ -61,6 +61,8 @@ struct WeightlessGraphNodeEdge: Hashable, Equatable, CustomStringConvertible {
 
 class PathFindGraphWeightless {
     func test() {
+        print(#function)
+        
         let a1 = WeightlessGraphNode(name: "1")
         let a2 = WeightlessGraphNode(name: "2")
         let a3 = WeightlessGraphNode(name: "3")

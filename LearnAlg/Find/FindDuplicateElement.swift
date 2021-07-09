@@ -9,6 +9,8 @@ import Foundation
 
 class TestFindDuplicateElement {
     func test() {
+        print(#function)
+        
         let hashing = FindDuplicateElementWithHashing()
         
         // Expected output: 4

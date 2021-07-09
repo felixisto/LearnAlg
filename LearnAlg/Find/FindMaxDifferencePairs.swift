@@ -9,6 +9,8 @@ import Foundation
 
 class TestFindMaxDifferencePairs {
     func test() {
+        print(#function)
+        
         let naive = FindMaxDifferencePairsNaive()
         let efficient = FindMaxDifferencePairsEfficient()
         

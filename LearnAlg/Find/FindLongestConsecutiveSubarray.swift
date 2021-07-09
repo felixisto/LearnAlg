@@ -19,6 +19,8 @@ import Foundation
  */
 class TestFindLongestConsecutiveSubarray {
     func test() {
+        print(#function)
+        
         let find = FindLongestConsecutiveSubarray()
         let caching = FindLongestConsecutiveSubarrayWithCaching()
         

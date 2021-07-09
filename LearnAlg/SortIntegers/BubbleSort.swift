@@ -9,6 +9,8 @@ import Foundation
 
 class TestBubbleSort {
     func test() {
+        print(#function)
+        
         let sort = InsertionSort()
         
         let array1 = [-2, 4, 20, 5, 7, 100, -50, 66]

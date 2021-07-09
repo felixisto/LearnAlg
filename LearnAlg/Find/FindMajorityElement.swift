@@ -12,6 +12,8 @@ import Foundation
  */
 class TestFindMajorityElement {
     func test() {
+        print(#function)
+        
         let brute = FindMajorityElementBruteForce()
         let hashing = FindMajorityElementHashing()
         let boyerMoore = FindMajorityElementBoyerMoore()

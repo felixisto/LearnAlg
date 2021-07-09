@@ -9,6 +9,8 @@ import Foundation
 
 class TestFindMaxProductArray {
     func test() {
+        print(#function)
+        
         let naive = FindMaxProductArrayNaive()
         let quick = FindMaxProductArrayQuick()
         

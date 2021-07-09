@@ -9,7 +9,7 @@ import Foundation
 
 class TestStringSearch {
     func test() {
-        
+        print(#function)
     }
 }
 

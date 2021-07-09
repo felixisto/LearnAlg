@@ -14,6 +14,8 @@ import Foundation
  */
 class TestFindEquilibriumIndex {
     func test() {
+        print(#function)
+        
         let linear = FindEquilibriumIndexLinear()
         let linearSpaceless = FindEquilibriumIndexLinearSpaceless()
         

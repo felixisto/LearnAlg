@@ -13,6 +13,8 @@ import Foundation
  */
 class TestFind01BalancedArray {
     func test() {
+        print(#function)
+        
         let find = Find01BalancedArray()
         
         // Expected output: [1, 0, 1, 0]

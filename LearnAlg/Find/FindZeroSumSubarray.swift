@@ -15,6 +15,8 @@ import Foundation
  */
 class TestFindZeroSumSubarray {
     func test() {
+        print(#function)
+        
         let find = FindZeroSumSubarray()
         
         // Expected output: [[3, 4, -7], [4, -7, 3], [-7, 3, 1, 3], [3, 1, -4], [3, 4, -7, 3, 1, 3, 1, -4, -2, -2], [3, 1, 3, 1, -4, -2, -2]]

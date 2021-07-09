@@ -15,6 +15,8 @@ import Foundation
  */
 class TestFindMaxSumSubarray {
     func test() {
+        print(#function)
+        
         let kadane = FindMaxSumSubarrayKadane()
         
         // Expected output: 6

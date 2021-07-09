@@ -9,6 +9,8 @@ import Foundation
 
 class TestQuickSort {
     func test() {
+        print(#function)
+        
         let sort = QuickSort()
         
         let array1 = [-2, 4, 20, 5, 7, 100, -50, 66]

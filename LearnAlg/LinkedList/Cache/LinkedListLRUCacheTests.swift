@@ -13,10 +13,14 @@ class LinkedListLRUCacheTests {
     typealias Cache = LinkedListLRUCache
     
     func test() {
-        test1()
+        print(#function)
+        
+        testEviction()
     }
     
-    func test1() {
+    func testEviction() {
+        print(#function)
+        
         let capacity = 2
         let cache = Cache(capacity)
         

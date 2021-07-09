@@ -9,6 +9,8 @@ import Foundation
 
 class TestRearangeHighLowAltArray {
     func test() {
+        print(#function)
+        
         let sort = RearangeHighLowAltArray()
         
         let array1 = [1, 2, 3, 4, 5, 6, 7]

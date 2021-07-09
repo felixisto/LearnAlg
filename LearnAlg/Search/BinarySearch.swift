@@ -9,6 +9,8 @@ import Foundation
 
 class TestBinarySearch {
     func test() {
+        print(#function)
+        
         let search = BinarySearch()
         
         let array1 = [-2, 4, 20, 5, 7, 100, -50, 66]
